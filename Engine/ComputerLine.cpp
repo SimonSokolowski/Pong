@@ -2,9 +2,9 @@
 
 void ComputerLine::Update(Graphics& gfx, Ball& ball)
 {
-	int height = 75 + ball.yPos;
+	int height = 75 + ball.GetyPos();
 	int width = 5 + xPos;
-	int yPos = ball.yPos - 75;
+	int yPos = ball.GetyPos() - 75;
 
 	if (yPos <= 0)
 	{
@@ -17,9 +17,9 @@ void ComputerLine::Update(Graphics& gfx, Ball& ball)
 		yPos = 450;
 	}
 
-	if (ball.xPos >= xPos)
+	if (ball.GetxPos() >= xPos)
 	{
-		ball.vx = - ball.vx;
+		ball.SetVX();
 	}
 
 	for (int x = xPos; x < width; ++x)

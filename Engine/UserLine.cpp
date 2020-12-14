@@ -1,9 +1,26 @@
 #include "UserLine.h"
-void UserLine::Update(Graphics& gfx, MainWindow& wnd, Ball& ball)
+
+void UserLine::Update(MainWindow& wnd, Ball& ball)
 {
-	int height = 150 + yPos;
-	int width = 5 + xPos;
-	
+	if (yPos <= 0)
+	{
+		yPos = 2;
+	}
+	if (height + yPos >= Graphics::ScreenHeight)
+	{
+		yPos -= 2;
+	}
+
+	if ((ball.GetxPos() <= width + xPos) && (ball.GetyPos() <= height - 2 + yPos)
+		&& (ball.GetyPos() >= yPos + 2))
+	{
+		ball.SetVX();
+		count += 20;
+	}
+}
+
+void UserLine::Move(MainWindow& wnd)
+{
 	if (wnd.kbd.KeyIsPressed(VK_UP))
 	{
 		yPos -= vy;
@@ -12,27 +29,26 @@ void UserLine::Update(Graphics& gfx, MainWindow& wnd, Ball& ball)
 	{
 		yPos += vy;
 	}
-	
-	if (yPos <= 0)
-	{
-		yPos = 2;
-	}
-	if (height >= gfx.ScreenHeight)
-	{
-		yPos -= 2;
-	}
+}
 
-	if ((ball.xPos <= width) && (ball.yPos <= height) 
-		&& (ball.yPos >= yPos))
+void UserLine::Draw(Graphics& gfx) const
+{
+	for (int x = xPos; x < width + xPos; ++x)
 	{
-		ball.vx = -ball.vx;
-	}
-	
-	for (int x = xPos; x < width; ++x)
-	{
-		for (int y = yPos; y < height; ++y)
+		for (int y = yPos; y < height + yPos; ++y)
 		{
 			gfx.PutPixel(x, y, r, g, b);
 		}
 	}
+}
+
+void UserLine::SetCount()
+{
+	count = 0;
+}
+
+
+int UserLine::GetCount()
+{
+	return count;
 }

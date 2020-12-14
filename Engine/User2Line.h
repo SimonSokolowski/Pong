@@ -3,23 +3,21 @@
 #include "MainWindow.h"
 #include "Ball.h"
 
-class UserLine
+class User2Line
 {
 public:
-	void Update(MainWindow& wnd, Ball& ball);
-	void Move(MainWindow& wnd);
+	void Update(Ball& ball);
 	void Draw(Graphics& gfx) const;
-	void SetCount();
-	int GetCount();
+	void Move(MainWindow& wnd);
 private:
-	int xPos = 40;
+	int xPos = 760;
 	int yPos = 50;
-	int count = 0;
 	const int r = 255;
 	const int g = 255;
 	const int b = 255;
 	const int vy = 2;
 	const int height = 150;
 	const int width = 5;
+
 };
 

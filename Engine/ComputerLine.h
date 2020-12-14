@@ -6,9 +6,10 @@ class ComputerLine
 {
 public:
 	void Update(Graphics& gfx,Ball& ball);
+private:
 	int xPos = 760;
-	int r = 255;
-	int g = 255;
-	int b = 255;
-	int vy = 2;
+	const int vy = 2;
+	const int r = 255;
+	const int g = 255;
+	const int b = 255;
 };
