@@ -49,13 +49,28 @@ void Ball::SetRGB(MainWindow& wnd)
 	
 	if (rainbow)
 	{
-		std::random_device rd;
-		std::mt19937 rng(rd());
-		std::uniform_int_distribution<int> rainbow(10, 250);
-
-		r = rainbow(rng);
-		g = rainbow(rng);
-		b = rainbow(rng);
+		if (increaseValue)
+		{
+			if (r >= 253)
+			{
+				increaseValue = false;
+			}
+			else
+			{
+				r += 2, g += 4, b += 4;
+			}
+		}
+		else
+		{
+			if (r <= 127)
+			{
+				increaseValue = true;
+			}
+			else
+			{
+				r -= 2, g -= 4, b -= 4;
+			}
+		}
 	}
 }
 

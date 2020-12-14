@@ -21,11 +21,12 @@ private:
 	const int vy = 2;
 	int vX = vx;
 	int vY = vy;
-	int r = 255;
-	int g = 255;
-	int b = 255;
+	int r = 173;
+	int g = 0;
+	int b = 0;
 	bool roundEnd = false;
 	bool rainbow = false;
+	bool increaseValue = true;
 	const int width = 8;
 	const int height = 8;
 };
